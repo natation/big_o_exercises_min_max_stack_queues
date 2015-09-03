@@ -19,3 +19,16 @@ def okay_two_sum?(arr, target)
   end
   false
 end
+
+def two_sum?(arr, target)
+  num_hash = Hash.new(0)
+  arr.length.times do |i|
+    num_hash[arr[i]] += 1
+  end
+
+  arr.each do |el|
+    next if (target.to_f / el == 2) && num_hash[el] == 1
+    return true if num_hash[target - el] > 0
+  end
+  false
+end
