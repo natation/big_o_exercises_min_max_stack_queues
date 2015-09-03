@@ -31,3 +31,8 @@ def anagram_2(str1, str2)
   end
   str1_arr.empty? && str2_arr.empty?
 end
+
+# Phase 3: O(n*log(n))
+def anagram_3(str1, str2)
+  str1.chars.sort == str2.chars.sort
+end
