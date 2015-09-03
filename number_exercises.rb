@@ -8,10 +8,11 @@ def my_min(list)
 end
 
 def largest_contiguous_subsum(list)
-  largest = list.first
-  cur_sum = largest < 0 ? largest : 0
+  return list.first if list.length <= 1
+  largest = 0
+  cur_sum = 0
   list.length.times do |i|
-    if list[i] < 0
+    if cur_sum + list[i] < 0
       largest = cur_sum if largest < cur_sum
       cur_sum = 0
     else
