@@ -1,9 +1,8 @@
+# O(n) time complexity
 def my_min(list)
+  smallest_num = list.first
   list.length.times do |i|
-    is_smallest = true
-    list.length.times do |j|
-      is_smallest = false if list[i] > list[j]
-    end
-    return list[i] if is_smallest
+    smallest_num = list[i] if list[i] < smallest_num
   end
+  smallest_num
 end
