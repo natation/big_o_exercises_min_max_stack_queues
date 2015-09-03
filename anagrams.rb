@@ -19,7 +19,7 @@ def first_anagram(str)
   anagrams
 end
 
-# Phase 2: O(n)
+# Phase 2: O(n ** 2)
 def anagram_2(str1, str2)
   return false if str1.length != str2.length
   str1_arr = str1.chars
@@ -35,4 +35,31 @@ end
 # Phase 3: O(n*log(n))
 def anagram_3(str1, str2)
   str1.chars.sort == str2.chars.sort
+end
+
+def anagram_4(str1, str2)
+  str1_hash = Hash.new(0)
+  str2_hash = Hash.new(0)
+
+  str1.chars do |char|
+    str1_hash[char] += 1
+  end
+  str2.chars do |char|
+    str2_hash[char] += 1
+  end
+
+  str1_hash == str2_hash
+end
+
+def anagram_5(str1, str2)
+  char_count = Hash.new(0)
+
+  str1.chars do |char|
+    char_count[char] += 1
+  end
+  str2.chars do |char|
+    char_count[char] -= 1
+  end
+
+  char_count.values.all? { |value| value == 0 }
 end
