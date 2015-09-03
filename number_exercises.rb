@@ -8,16 +8,15 @@ def my_min(list)
 end
 
 def largest_contiguous_subsum(list)
-  list_of_lists = []
-  list.length.times do |start|
-    (start...list.length).each do |stop|
-      list_of_lists << list[start..stop]
+  largest = list.first
+  cur_sum = largest < 0 ? largest : 0
+  list.length.times do |i|
+    if list[i] < 0
+      largest = cur_sum if largest < cur_sum
+      cur_sum = 0
+    else
+      cur_sum += list[i]
     end
   end
-  list_of_sums = list_of_lists.map {|list| list.inject(:+) }
-  largest = list_of_sums.first
-  list_of_sums.each do |num|
-    largest = num if num > largest
-  end
-  largest
+  largest < cur_sum ? cur_sum : largest
 end
