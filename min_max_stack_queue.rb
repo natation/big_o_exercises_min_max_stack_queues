@@ -1,13 +1,22 @@
 class MyStack
+  attr_reader :max
+
   def initialize
     @store = []
+    @max = nil
+    @min = nil
   end
 
   def push(el)
+    @max ||= el
+    @max = el if el > @max
+    @min ||= el
+    @min = el if el < @min
     @store.push(el)
   end
 
   def pop
+
     @store.pop
   end
 
