@@ -52,7 +52,9 @@ class MyStack
   end
 end
 
-class Queue
+class MinMaxStackQueue
+  attr_reader :max, :min
+
   def initialize
     @input = MyStack.new
     @output = MyStack.new
@@ -85,14 +87,6 @@ class Queue
 
   def size
     @input.size + @output.size
-  end
-
-  def max
-    @max
-  end
-
-  def min
-    @min
   end
 
   private
