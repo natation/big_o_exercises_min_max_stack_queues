@@ -54,7 +54,6 @@ end
 
 class MinMaxStackQueue
   attr_reader :max, :min
-
   def initialize
     @input = MyStack.new
     @output = MyStack.new
